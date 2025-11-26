@@ -36,45 +36,39 @@ Este é um **showcase prático** para workshops de engenharia de dados, demonstr
 ```mermaid
 graph TB
     subgraph Internet
-        Client[👤 Cliente]
+        Client[Cliente]
     end
 
     subgraph AWS Cloud
         subgraph Application Layer
-            ALB[⚖️ Application<br/>Load Balancer]
-            API1[🐳 FastAPI<br/>Container 1]
-            API2[🐳 FastAPI<br/>Container 2]
+            ALB[Load balancer]
+            API[FastAPI]
         end
 
         subgraph Data Layer
-            Redis[(🔴 Redis<br/>ElastiCache<br/><br/>• Cache<br/>• Contadores<br/>• Temp Data)]
-            PG[(🐘 PostgreSQL<br/>RDS<br/><br/>• Dados Persistentes<br/>• Transações ACID<br/>• Histórico)]
+            Redis[(Redis<br/>ElastiCache<br/><br/>)]
+            PG[(PostgreSQL<br/>RDS<br/>)]
         end
 
         subgraph Monitoring
-            CW[📊 CloudWatch<br/>Logs + Metrics]
+            CW[CloudWatch]
         end
     end
 
     Client -->|HTTPS| ALB
-    ALB --> API1
-    ALB --> API2
+    ALB --> API
 
-    API1 -.->|Cache Hit<br/>~1ms| Redis
-    API2 -.->|Cache Hit<br/>~1ms| Redis
+    API -.->|Cache Hit<br/>~1ms| Redis
 
-    API1 -->|Cache Miss<br/>~50ms| PG
-    API2 -->|Cache Miss<br/>~50ms| PG
+    API -->|Cache Miss<br/>~50ms| PG
 
-    API1 --> CW
-    API2 --> CW
+    API --> CW
     Redis -.-> CW
     PG -.-> CW
 
     style Redis fill:#ff6b6b
     style PG fill:#4dabf7
-    style API1 fill:#51cf66
-    style API2 fill:#51cf66
+    style API fill:#51cf66
     style ALB fill:#ffd43b
 ```
 
@@ -111,7 +105,7 @@ sequenceDiagram
     else Cache MISS
         R-->>API: null
         API->>PG: SELECT * FROM posts WHERE id=1
-        Note over API,PG: ~50ms
+        Note over API,PG: 100ms-200ms
         PG-->>API: {dados do post}
         API->>R: SET post:1 {dados} EX 300
         API-->>C: 200 OK
@@ -255,7 +249,7 @@ sequenceDiagram
 
 ### Backend
 - **FastAPI**: Framework web moderno e rápido
-- **Python 3.11**: Linguagem de programação
+- **Python 3.12**: Linguagem de programação
 - **Pydantic**: Validação de dados
 - **Uvicorn**: ASGI server
 
