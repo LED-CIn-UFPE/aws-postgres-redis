@@ -1,0 +1,1 @@
+"""Utils - Utilitários e constantes"""

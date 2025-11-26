@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Tech - Workshop AWS Data Engineering</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Highlight.js theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo" onclick="showHome(); return false;">
+                <span class="logo-icon">📰</span>
+                <div class="logo-text">
+                    <h1>Blog Tech</h1>
+                    <p>Engenharia de Dados</p>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home" onclick="showHome(); return false;">Início</a></li>
+                    <li><a href="#" class="nav-link" data-page="ranking" onclick="showRanking(); return false;">Top Posts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Workshop: AWS + PostgreSQL + Redis</h2>
+        <p>Demonstração prática de cache patterns e arquitetura escalável</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Stats Bar -->
+        <div class="stats-bar" id="stats-bar">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-posts">-</div>
+                <div class="stat-label">Posts Publicados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-authors">-</div>
+                <div class="stat-label">Autores</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-views">-</div>
+                <div class="stat-label">Visualizações Totais</div>
+            </div>
+        </div>
+
+        <!-- Home Page - Posts Grid -->
+        <div id="home-page">
+            <div class="posts-grid" id="posts-grid">
+                <!-- Posts will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Ranking Page -->
+        <div id="ranking-page" style="display: none;">
+            <div class="ranking-list" id="ranking-list">
+                <!-- Ranking will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Post Detail Page -->
+        <div id="post-detail-page" style="display: none;">
+            <div class="post-detail" id="post-detail-content">
+                <!-- Post detail will be loaded here -->
+            </div>
+            <button class="btn" onclick="showHome()">← Voltar</button>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Carregando...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-state-icon">📭</div>
+            <h3>Nenhum conteúdo encontrado</h3>
+            <p>Não há posts disponíveis no momento.</p>
+        </div>
+    </div>
+
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Markdown renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
